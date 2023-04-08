@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "/Users/karan/Desktop/marketX/contracts/Marketx.sol": {
-      "lastModificationDate": 1680867631150,
-      "contentHash": "c5e69bbfa60577ce55b8360b82855c3d",
+      "lastModificationDate": 1680900854742,
+      "contentHash": "8311df84470cb72f59238b0a4cf9fe7d",
       "sourceName": "contracts/Marketx.sol",
       "solcConfig": {
         "version": "0.8.17",
