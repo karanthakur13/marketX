@@ -13,9 +13,23 @@ contract Marketx {
         uint256 rating;
         uint256 stock;
     }
+    struct Order{
+        uint256 time;
+        Item item;
+    }
 
     mapping(uint256 => Item) public items;
+    mapping(address => uint256) public orderCount;
+    mapping(address => mapping(uint256 => Order )) public orders;
 
+
+    event List(string name, uint256 cost, uint256 quantity );
+    event Buy(address buyer, uint256 orderId, uint256 itemId); 
+
+    modifier onlyOwner () {
+        require(msg.sender == owner);
+        _;
+    }
     constructor() {
         owner = msg.sender;
     }
@@ -26,7 +40,7 @@ contract Marketx {
                 string memory _image,
                 uint256 _cost,
                 uint256 _rating,
-                uint256 _stock ) public {
+                uint256 _stock ) public onlyOwner{
 
         Item memory item = Item(_id,
                 _name,
@@ -38,9 +52,28 @@ contract Marketx {
             );
 
     items[_id] = item;
- 
 
+    emit List(_name,_cost,_stock);
 
+    }
+
+    function buy(uint256 _id) public payable{
+        Item memory item = items[_id];
+        require(msg.value >= item.cost);
+        Order memory order = Order(block.timestamp,item);
+        //Add order
+        orderCount[msg.sender]++;
+        orders[msg.sender][orderCount[msg.sender]] = order;
+        // Subtract Stock
+        items[_id].stock --;
+
+        emit Buy(msg.sender, orderCount[msg.sender],item.id);
+
+    }
+
+    function withdraw()public onlyOwner{
+        (bool success, )=owner.call{value: address(this).balance }("");
+        require(success);
     }
 
 
