@@ -2,11 +2,11 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "/Users/karan/Desktop/marketX/contracts/Marketx.sol": {
-      "lastModificationDate": 1681070755984,
+      "lastModificationDate": 1681079497704,
       "contentHash": "b567e7ccd8f4018d3f824279b8e2c0ed",
       "sourceName": "contracts/Marketx.sol",
       "solcConfig": {
-        "version": "0.8.17",
+        "version": "0.8.9",
         "settings": {
           "optimizer": {
             "enabled": false,

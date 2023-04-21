@@ -38,7 +38,7 @@ function App() {
     const network = await provider.getNetwork()
     console.log(network)
     const marketx = new ethers.Contract(
-      "0x5fbdb2315678afecb367f032d93f642f64180aa3",
+      "0xF43E7De7a43A762C6b3af6D4E71Caa36C4457D1a",
       Marketx,
       provider
     ) 
